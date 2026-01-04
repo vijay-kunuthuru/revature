@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>Jquery examples</h2>
+
+    <p id="p1">This is a jquery</p>
+    <p id="p2">This is paragraph 2</p>
+    <p id="p3">This is paragraph 2</p>
+
+    <script>
+        $("p").dblclick(function(){
+            $(this).hide();
+        });
+
+        $("#p1").mouseleave(function(){
+            alert("Bye! you now leave p1!");
+        });
+
+        $("#p2").mousedown(function(){
+            alert("mouse down over p2!");
+        });
+
+        $("#p3").mouseup(function(){
+            alert("mouse up over p3!");
+        });
+    </script>
+</body>
+</html>

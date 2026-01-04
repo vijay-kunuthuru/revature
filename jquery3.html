@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery To-Do App</title>
+ 
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+  <style>
+    body {
+      font-family: Arial;
+      background: #907f7f;
+      padding: 30px;
+    }
+ 
+    .container {
+      width: 350px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+ 
+    h2 {
+      text-align: center;
+    }
+ 
+    input {
+      width: 75%;
+      padding: 8px;
+    }
+ 
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+ 
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+ 
+    li {
+      padding: 8px;
+      margin: 6px 0;
+      background: #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+ 
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+ 
+    .delete {
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
+ 
+<body>
+ 
+<div class="container">
+  <h2>📝 To-Do List</h2>
+ 
+  <input type="text" id="task" placeholder="Enter task">
+  <button id="addBtn">Add</button>
+ 
+  <ul id="taskList"></ul>
+</div>
+ 
+<script>
+  $(document).ready(function () {
+ 
+    // Add task
+    $("#addBtn").click(function () {
+      let task = $("#task").val();
+ 
+      if (task === "") {
+        alert("Please enter a task");
+        return;
+      }
+ 
+      let listItem = `
+        <li>
+          <span class="taskText">${task}</span>
+          <span class="delete">❌</span>
+        </li>
+      `;
+ 
+      $("#taskList").append(listItem);
+      $("#task").val("");
+    });
+ 
+    // Mark task as completed
+    $("#taskList").on("click", ".taskText", function () {
+      $(this).toggleClass("completed");
+    });
+ 
+    // Delete task
+    $("#taskList").on("click", ".delete", function () {
+      $(this).parent().fadeOut(500, function () {
+        $(this).remove();
+      });
+    });
+ 
+  });
+</script>
+ 
+</body>
+</html>
+ 

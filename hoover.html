@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <p id="p1">This is paragraph </p>
+    <input type="text" placeholder="name">
+    <script>
+         $(document).ready(function(){
+            $("#p1").hover(function(){
+                alert("you entered p1");
+            },
+            function(){
+                alert("Bye! you may leave p1");
+            });
+        });
+
+
+        $("input").focus(function(){
+            $(this).css("background-color", "#cccccc");
+        });
+
+         $("input").blur(function(){
+            $(this).css("background-color", "#afffff");
+        });
+
+    </script>
+</body>
+</html>

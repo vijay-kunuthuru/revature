@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Form Validation</title>
+ 
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      padding: 30px;
+    }
+ 
+    .form-container {
+      width: 350px;
+      background: white;
+      padding: 20px;
+      margin: auto;
+      border-radius: 8px;
+    }
+ 
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+ 
+    .error {
+      color: red;
+      font-size: 13px;
+      display: none;
+    }
+ 
+    .success {
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
+ 
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+ 
+<body>
+ 
+<div class="form-container">
+  <h2>Registration Form</h2>
+ 
+  <form id="myForm">
+ 
+    <label>Name</label>
+    <input type="text" id="name">
+    <span class="error" id="nameError">Name is required</span>
+ 
+    <label>Email</label>
+    <input type="text" id="email">
+    <span class="error" id="emailError">Enter a valid email</span>
+ 
+    <label>Password</label>
+    <input type="password" id="password">
+    <span class="error" id="passwordError">
+      Password must be at least 6 characters
+    </span>
+ 
+    <label>Gender</label>
+    <select id="gender">
+      <option value="">Select</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+    <span class="error" id="genderError">Please select gender</span>
+ 
+    <button type="submit">Register</button>
+  </form>
+ 
+  <div class="success">Form submitted successfully ✔</div>
+</div>
+ 
+<script>
+  $(document).ready(function () {
+ 
+    $("#myForm").submit(function (e) {
+      e.preventDefault(); // stop form submission
+ 
+      $(".error").hide();
+      let isValid = true;
+ 
+      // Name validation
+      if ($("#name").val().trim() === "") {
+        $("#nameError").show();
+        isValid = false;
+      }
+ 
+      // Email validation
+      let email = $("#email").val();
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+ 
+      if (!email.match(emailPattern)) {
+        $("#emailError").show();
+        isValid = false;
+      }
+ 
+      // Password validation
+      if ($("#password").val().length < 6) {
+        $("#passwordError").show();
+        isValid = false;
+      }
+ 
+      // Gender validation
+      if ($("#gender").val() === "") {
+        $("#genderError").show();
+        isValid = false;
+      }
+ 
+      // Final result
+      if (isValid) {
+        $(".success").show();
+        $("#myForm")[0].reset();
+      }
+    });
+ 
+  });
+</script>
+ 
+</body>
+</html>

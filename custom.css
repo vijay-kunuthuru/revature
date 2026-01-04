@@ -1,0 +1,21 @@
+/* change bootstrap primary color
+
+declare global css variables
+*/
+/* GLOBAL CUSTOMIZATION */
+:root {
+  --bs-primary: #6f42c1;
+}
+
+.btn-custom{
+    background-color:aqua;
+    color: black;
+    border-radius: 30px;
+}
+
+.btn-custom:hover{
+    background-color: #59339d;
+    color:white;
+}
+
+ 
